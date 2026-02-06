@@ -1,26 +1,19 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Configure your theme directly here */
+@theme {
+  /* Override or extend values using CSS variables */
+  --font-display: "Satoshi", "sans-serif";
+  
+  /* Define custom colors (OKLCH is the new standard, but hex works too) */
+  --color-primary: oklch(0.5 0.15 200);
+  --color-secondary: #3b82f6;
+
+  /* Custom breakpoints */
+  --breakpoint-3xl: 120rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Add custom utilities */
+@utility text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
