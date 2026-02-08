@@ -15,33 +15,104 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   service,
   message,
 }) => (
-  <div style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a', padding: '40px 20px', maxWidth: '600px', margin: '0 auto' }}>
-    
-    {/* Header */}
-    <div style={{ paddingBottom: '20px', borderBottom: '1px solid #e5e5e5', marginBottom: '30px' }}>
-      <h1 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0' }}>New Lead Received</h1>
-      <p style={{ fontSize: '14px', color: '#666', margin: '5px 0 0' }}>via pivotalbuildersinc.com</p>
-    </div>
+  <div style={{ backgroundColor: '#f3f4f6', padding: '40px 0', fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
+    <div style={{
+      maxWidth: '600px',
+      margin: '0 auto',
+      backgroundColor: '#ffffff',
+      borderRadius: '12px',
+      overflow: 'hidden',
+      boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
+    }}>
 
-    {/* Details Box */}
-    <div style={{ backgroundColor: '#f5f5f5', padding: '25px', borderRadius: '12px', marginBottom: '30px' }}>
-      <p style={{ margin: '0 0 10px' }}><strong style={{ color: '#000' }}>Name:</strong> {name}</p>
-      <p style={{ margin: '0 0 10px' }}><strong style={{ color: '#000' }}>Email:</strong> <a href={`mailto:${email}`} style={{ color: '#0066cc', textDecoration: 'none' }}>{email}</a></p>
-      <p style={{ margin: '0 0 10px' }}><strong style={{ color: '#000' }}>Phone:</strong> <a href={`tel:${phone}`} style={{ color: '#0066cc', textDecoration: 'none' }}>{phone}</a></p>
-      <p style={{ margin: '0 0 0' }}><strong style={{ color: '#000' }}>Service:</strong> {service}</p>
-    </div>
+      {/* Hero Header - Black Brand Background */}
+      <div style={{ backgroundColor: '#000000', padding: '35px 40px', textAlign: 'center' }}>
+        <h1 style={{ color: '#ffffff', fontSize: '24px', fontWeight: '700', margin: '0', letterSpacing: '2px', textTransform: 'uppercase' }}>
+          Pivotal Builders
+        </h1>
+        <p style={{ color: '#888888', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '3px', margin: '10px 0 0' }}>
+          New Project Inquiry
+        </p>
+      </div>
 
-    {/* Message Body */}
-    <div>
-      <h3 style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '10px' }}>Project Details:</h3>
-      <p style={{ fontSize: '16px', lineHeight: '1.6', color: '#333', whiteSpace: 'pre-wrap', backgroundColor: '#fff', border: '1px solid #e5e5e5', padding: '15px', borderRadius: '8px' }}>
-        {message}
-      </p>
-    </div>
+      {/* Main Content Area */}
+      <div style={{ padding: '40px 40px 50px' }}>
 
-    {/* Footer */}
-    <div style={{ marginTop: '40px', paddingTop: '20px', borderTop: '1px solid #e5e5e5', fontSize: '12px', color: '#888', textAlign: 'center' }}>
-      <p>Sent from Pivotal Builders Website Contact Form.</p>
+        {/* Client Details Grid */}
+        <div style={{ paddingBottom: '30px', borderBottom: '1px solid #eeeeee' }}>
+           <h2 style={{ fontSize: '16px', fontWeight: '700', color: '#000000', marginBottom: '25px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+             Client Details
+           </h2>
+
+           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+             <tbody>
+               <tr>
+                 <td style={{ paddingBottom: '20px', color: '#888888', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px', width: '100px', verticalAlign: 'top' }}>Name</td>
+                 <td style={{ paddingBottom: '20px', color: '#111111', fontSize: '16px', fontWeight: '500', verticalAlign: 'top' }}>{name}</td>
+               </tr>
+               <tr>
+                 <td style={{ paddingBottom: '20px', color: '#888888', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px', verticalAlign: 'top' }}>Service</td>
+                 <td style={{ paddingBottom: '20px', color: '#111111', fontSize: '16px', fontWeight: '500', verticalAlign: 'top' }}>
+                    <span style={{ backgroundColor: '#f0f0f0', padding: '4px 8px', borderRadius: '4px', fontSize: '14px' }}>
+                      {service}
+                    </span>
+                 </td>
+               </tr>
+               <tr>
+                 <td style={{ paddingBottom: '20px', color: '#888888', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px', verticalAlign: 'top' }}>Email</td>
+                 <td style={{ paddingBottom: '20px', verticalAlign: 'top' }}>
+                   <a href={`mailto:${email}`} style={{ color: '#000000', textDecoration: 'underline', fontSize: '16px', fontWeight: '500' }}>{email}</a>
+                 </td>
+               </tr>
+               <tr>
+                 <td style={{ color: '#888888', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px', verticalAlign: 'top' }}>Phone</td>
+                 <td style={{ verticalAlign: 'top' }}>
+                   <a href={`tel:${phone}`} style={{ color: '#000000', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>{phone}</a>
+                 </td>
+               </tr>
+             </tbody>
+           </table>
+        </div>
+
+        {/* Message Section */}
+        <div style={{ paddingTop: '30px' }}>
+           <h2 style={{ fontSize: '16px', fontWeight: '700', color: '#000000', marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+             Project Vision
+           </h2>
+           <div style={{ backgroundColor: '#f9f9f9', padding: '25px', borderRadius: '8px', borderLeft: '4px solid #000000' }}>
+             <p style={{ margin: '0', fontSize: '15px', lineHeight: '1.7', color: '#333333', whiteSpace: 'pre-wrap', fontStyle: 'italic' }}>
+               "{message}"
+             </p>
+           </div>
+        </div>
+
+        {/* Call to Action Button */}
+        <div style={{ marginTop: '50px', textAlign: 'center' }}>
+          <a href={`mailto:${email}?subject=Re: Your Project Inquiry - Pivotal Builders`} style={{
+            display: 'inline-block',
+            backgroundColor: '#000000',
+            color: '#ffffff',
+            padding: '18px 40px',
+            borderRadius: '50px',
+            textDecoration: 'none',
+            fontWeight: '600',
+            fontSize: '14px',
+            letterSpacing: '1px',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.2)'
+          }}>
+            REPLY TO CLIENT
+          </a>
+        </div>
+
+      </div>
+
+      {/* Footer */}
+      <div style={{ backgroundColor: '#f9f9f9', padding: '25px', textAlign: 'center', borderTop: '1px solid #eeeeee' }}>
+        <p style={{ margin: '0', fontSize: '11px', color: '#999999', textTransform: 'uppercase', letterSpacing: '1px' }}>
+          Securely transmitted via pivotalbuildersinc.com
+        </p>
+      </div>
+
     </div>
   </div>
 );
