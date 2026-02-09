@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React from 'react';
+import Image from 'next/image'; // <--- Import Image
 
 const steps = [
   {
@@ -65,7 +66,8 @@ export default function ProcessSection() {
               <span className="text-neutral-400">precision & trust.</span>
             </h2>
             <p className="text-neutral-500 text-lg leading-relaxed max-w-lg">
-              From the first sketch to the final polish, our workflow is designed to deliver excellence without the stress.
+              Whether you’re building a luxurious custom home or transforming your existing space to better reflect
+your lifestyle, Pivotal Builders is your trusted partner every step of the way.
             </p>
           </div>
         </div>
@@ -76,27 +78,27 @@ export default function ProcessSection() {
         ======================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative">
           
-          {/* LEFT: Sticky Image Column (Span 5) 
-              - 'sticky top-12' makes it stick to the viewport top
-              - 'h-fit' ensures it flows naturally
-          */}
+          {/* LEFT: Sticky Image Column (Span 5) */}
           <div className="hidden lg:block lg:col-span-5 relative">
-             <div className="sticky top-12 h-[calc(100vh-6rem)] flex items-center justify-center py-8">
-                <div className="w-full h-full max-h-[700px] rounded-2xl overflow-hidden shadow-2xl relative group">
-                   <img 
-                     src="https://images.unsplash.com/photo-1621293954908-907159247fc8?q=80&w=1200&auto=format&fit=crop" 
-                     alt="Architectural Blueprint Meeting" 
-                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                   />
-                   <div className="absolute inset-0 bg-black/10"></div>
-                   
-                   {/* Optional Overlay Text */}
-                   <div className="absolute bottom-8 left-8 text-white max-w-xs">
-                      <p className="font-mono text-xs uppercase tracking-widest opacity-80 mb-2">The Standard</p>
-                      <p className="text-xl font-medium">Built for perfection.</p>
-                   </div>
-                </div>
-             </div>
+              <div className="sticky top-12 h-[calc(100vh-6rem)] flex items-center justify-center py-8">
+                 <div className="w-full h-full max-h-[700px] rounded-2xl overflow-hidden shadow-2xl relative group">
+                    {/* OPTIMIZED IMAGE */}
+                    <Image 
+                      src="/website-photos-12.jpg" // Renamed from "Website Photos -12.jpg"
+                      alt="Architectural Blueprint Meeting" 
+                      fill
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      unoptimized={true}
+                    />
+                    <div className="absolute inset-0 bg-black/10"></div>
+                    
+                    {/* Optional Overlay Text */}
+                    <div className="absolute bottom-8 left-8 text-white max-w-xs z-10">
+                       <p className="font-mono text-xs uppercase tracking-widest opacity-80 mb-2">The Standard</p>
+                       <p className="text-xl font-medium">Built for perfection.</p>
+                    </div>
+                 </div>
+              </div>
           </div>
 
 
@@ -115,32 +117,32 @@ export default function ProcessSection() {
                   
                   {/* Card Header */}
                   <div className="flex justify-between items-start">
-                     <div>
-                        <span className="block font-mono text-xs uppercase tracking-widest opacity-60 mb-3">
-                           Step {step.id}
-                        </span>
-                        <h3 className="text-3xl md:text-5xl font-medium tracking-tight leading-tight">
-                           {step.title}
-                        </h3>
-                        {step.subtitle && (
-                           <p className="text-lg md:text-xl opacity-60 mt-2 font-light">
-                              {step.subtitle}
-                           </p>
-                        )}
-                     </div>
-                     
-                     {/* Decorative Icon or Number */}
-                     <div className="hidden md:flex w-14 h-14 rounded-full border border-current opacity-20 items-center justify-center text-xl font-serif italic">
-                        {index + 1}
-                     </div>
-                  </div>
-                  
-                  {/* Card Body */}
-                  <div className="max-w-xl">
-                     <p className="text-lg md:text-2xl font-light leading-relaxed opacity-90">
-                        {step.description}
-                     </p>
-                  </div>
+                      <div>
+                         <span className="block font-mono text-xs uppercase tracking-widest opacity-60 mb-3">
+                            Step {step.id}
+                         </span>
+                         <h3 className="text-3xl md:text-5xl font-medium tracking-tight leading-tight">
+                            {step.title}
+                         </h3>
+                         {step.subtitle && (
+                            <p className="text-lg md:text-xl opacity-60 mt-2 font-light">
+                               {step.subtitle}
+                            </p>
+                         )}
+                      </div>
+                      
+                      {/* Decorative Icon or Number */}
+                      <div className="hidden md:flex w-14 h-14 rounded-full border border-current opacity-20 items-center justify-center text-xl font-serif italic">
+                         {index + 1}
+                      </div>
+                   </div>
+                   
+                   {/* Card Body */}
+                   <div className="max-w-xl">
+                      <p className="text-lg md:text-2xl font-light leading-relaxed opacity-90">
+                         {step.description}
+                      </p>
+                   </div>
 
                 </div>
               </div>

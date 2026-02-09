@@ -9,12 +9,23 @@ import {
   Linkedin, 
   Twitter 
 } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const RecentProjects = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   // Animation variants
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      }
+    }
+  };
+
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -27,7 +38,12 @@ const RecentProjects = () => {
 
   return (
     <section className="w-full bg-[#F9F9F9] py-24 px-8 md:px-12" ref={containerRef}>
-      <div className="max-w-[1400px] mx-auto">
+      <motion.div 
+        className="max-w-[1400px] mx-auto"
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
         
         {/* =======================
             TOP ROW (Image + Text)
@@ -36,26 +52,22 @@ const RecentProjects = () => {
           
           {/* Top Left: Large Image */}
           <motion.div 
-            className="w-full lg:w-1/2 overflow-hidden rounded-sm"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+            className="w-full lg:w-1/2 overflow-hidden rounded-sm relative aspect-[4/3] group cursor-pointer"
             variants={imageReveal}
           >
-            <div className="relative aspect-[4/3] group cursor-pointer overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop" 
-                alt="Modern Living Room with Brown Leather Sofa" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-            </div>
+            <Image 
+              src="/website-photos-21.jpg" // Renamed from "Website Photos -21.jpg"
+              alt="Recent Project 1" 
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              unoptimized={true}
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
           </motion.div>
 
           {/* Top Right: Text Content */}
           <motion.div 
             className="w-full lg:w-1/2 bg-white p-8 md:p-12 lg:p-16 flex flex-col justify-center rounded-sm"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
             variants={fadeUp}
           >
             <h2 className="text-4xl lg:text-5xl font-medium text-neutral-900 mb-6 leading-tight tracking-tight">
@@ -63,19 +75,26 @@ const RecentProjects = () => {
             </h2>
             
             <p className="text-neutral-500 text-sm leading-relaxed mb-10 max-w-md">
-              Discover our real estate projects, featuring innovative designs and expert craftsmanship that bring every space to life with elegance.
+              From the first conversation to the final walkthrough, we deliver a transparent, collaborative process and
+craftsmanship our clients trust completely.
             </p>
 
             {/* Buttons */}
             <div className="flex flex-wrap items-center gap-4 mb-12">
-              <button className="bg-black text-white px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-neutral-800 transition-colors flex items-center gap-2 group">
+              <Link 
+                href="/contact"
+                className="bg-black text-white px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-neutral-800 transition-colors flex items-center gap-2 group"
+              >
                 Get a quote 
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
               
-              <button className="px-8 py-3.5 rounded-full text-sm font-semibold text-neutral-900 border border-neutral-200 hover:bg-neutral-50 transition-colors">
+              <Link 
+                href="/portfolio"
+                className="px-8 py-3.5 rounded-full text-sm font-semibold text-neutral-900 border border-neutral-200 hover:bg-neutral-50 transition-colors"
+              >
                 Browse portfolio
-              </button>
+              </Link>
             </div>
 
             {/* Divider & Socials */}
@@ -99,43 +118,37 @@ const RecentProjects = () => {
           
           {/* Bottom Left: Narrower Image (approx 40%) */}
           <motion.div 
-            className="w-full lg:w-[40%] overflow-hidden rounded-sm"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            transition={{ delay: 0.2 }}
+            className="w-full lg:w-[40%] overflow-hidden rounded-sm relative aspect-[3/4] lg:aspect-[4/3] group cursor-pointer"
             variants={imageReveal}
           >
-             <div className="relative aspect-[3/4] lg:aspect-[4/3] group cursor-pointer overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1200&auto=format&fit=crop" 
-                alt="Marble Bathroom" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-            </div>
+             <Image 
+               src="/website-photos-22.jpg" 
+               alt="Recent Project 2" 
+               fill
+               className="object-cover transition-transform duration-700 group-hover:scale-105"
+               unoptimized={true}
+             />
+             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
           </motion.div>
 
           {/* Bottom Right: Wider Image (approx 60%) */}
           <motion.div 
-            className="w-full lg:w-[60%] overflow-hidden rounded-sm"
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            transition={{ delay: 0.4 }}
+            className="w-full lg:w-[60%] overflow-hidden rounded-sm relative aspect-[4/3] group cursor-pointer"
             variants={imageReveal}
           >
-             <div className="relative aspect-[4/3] group cursor-pointer overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1600&auto=format&fit=crop" 
-                alt="Home Office Library" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-            </div>
+             <Image 
+               src="/website-photos-31.jpg" 
+               alt="Recent Project 3" 
+               fill
+               className="object-cover transition-transform duration-700 group-hover:scale-105"
+               unoptimized={true}
+             />
+             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
           </motion.div>
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };

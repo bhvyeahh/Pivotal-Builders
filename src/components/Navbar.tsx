@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link'; // <--- IMPORT THIS
+import { motion, AnimatePresence, Variants } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
 import { 
   ArrowRight, 
   Facebook, 
@@ -24,8 +25,8 @@ const navLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Animation variants
-  const menuVariants = {
+  // Explicitly type variants to fix red squiggly lines
+  const menuVariants: Variants = {
     closed: { 
       opacity: 0,
       x: "100%",
@@ -38,7 +39,7 @@ export default function Navbar() {
     }
   };
 
-  const linkVariants = {
+  const linkVariants: Variants = {
     closed: { opacity: 0, x: 50 },
     open: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } }
   };
@@ -55,12 +56,16 @@ export default function Navbar() {
         {/* LEFT: Logo */}
         <div className="flex items-center gap-16">
           <Link href="/" className="text-white flex items-center gap-3 group z-50 relative">
-            <div className="w-10 h-10 border border-white/20 rounded-lg flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300 backdrop-blur-sm">
-               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                 <path d="M3 21h18"/>
-                 <path d="M5 21V7l8-4 8 4v14"/>
-                 <path d="M9 10a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/>
-               </svg>
+            <div className="relative w-12 h-12 overflow-hidden rounded-lg border border-white/20 group-hover:border-white/50 transition-colors">
+               {/* OPTIMIZED LOGO IMAGE */}
+               <Image 
+                 src="/website-photos-2.jpg" 
+                 alt="Pivotal Builders Logo" 
+                 fill
+                 className="object-cover"
+                 sizes="48px"
+                 priority
+               />
             </div>
           </Link>
 

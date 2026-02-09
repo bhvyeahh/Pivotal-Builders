@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/components/SmoothScroll";
 import NextTopLoader from "nextjs-toploader";
+import ScrollToTop from "@/components/ScrollToTop";
 
 // 2. Configure Font
 const spaceGrotesk = Space_Grotesk({ 
@@ -41,6 +42,7 @@ export default function RootLayout({
         />
         <Navbar /> 
         {children}
+        <ScrollToTop />
         </SmoothScroll>
       </body>
     </html>

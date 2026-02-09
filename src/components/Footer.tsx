@@ -1,124 +1,69 @@
 "use client";
 
 import React from 'react';
-import { 
-  Facebook, 
-  Instagram, 
-  Linkedin, 
-  Twitter, 
-  ArrowUpRight,
-  MapPin,
-  Mail,
-  Phone
-} from 'lucide-react';
+import { ArrowUpRight, Instagram } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#0A0A0A] text-white pt-16 lg:pt-24 pb-8 lg:pb-12 px-6 md:px-12 border-t border-white/10">
-      <div className="max-w-[1400px] mx-auto">
-        
+    <footer className="w-full bg-[#0A0A0A] text-white py-20 px-6 md:px-12 border-t border-white/10">
+      <div className="max-w-[1400px] mx-auto flex flex-col gap-16">
+
         {/* =======================
-            TOP CONTENT GRID
+            1. THE BIG CTA
         ======================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-16 lg:mb-24">
-          
-          {/* LEFT COLUMN: Brand & Description (Span 5) */}
-          <div className="lg:col-span-5 flex flex-col gap-6 lg:gap-8">
-            {/* Logo */}
-            <a href="#" className="flex items-center gap-3 w-fit">
-              <div className="w-8 h-8 border-2 border-white rounded-sm flex items-center justify-center">
-                 <div className="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <span className="text-xl font-bold tracking-tight text-white">
-                Pivotal Builders
-              </span>
-            </a>
-
-            {/* Description */}
-            <p className="text-neutral-400 text-sm leading-7 max-w-sm">
-              We design spaces that transform lives. Every project is a fusion of innovation, functionality, and aesthetics, crafted for the future.
-            </p>
-
-            {/* Social Icons */}
-            <div className="flex items-center gap-5 mt-2">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/10 transition-all">
-                   <Icon size={18} strokeWidth={1.5} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-
-          {/* RIGHT COLUMNS: Navigation Links (Span 7) */}
-          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-8">
-            
-            {/* Column 1: Main Pages */}
-            <div className="flex flex-col gap-4 lg:gap-6">
-              <h4 className="text-white font-semibold text-sm tracking-wide uppercase opacity-90">Main pages</h4>
-              <nav className="flex flex-col gap-3 text-sm text-neutral-400">
-                {['Home', 'About Us', 'Services', 'Projects', 'Blog'].map((item) => (
-                   <a key={item} href="#" className="hover:text-white transition-colors w-fit">{item}</a>
-                ))}
-              </nav>
-            </div>
-
-            {/* Column 2: Utility Pages */}
-            <div className="flex flex-col gap-4 lg:gap-6">
-              <h4 className="text-white font-semibold text-sm tracking-wide uppercase opacity-90">Utility pages</h4>
-              <nav className="flex flex-col gap-3 text-sm text-neutral-400">
-                {['Contact', 'Get a quote', 'Privacy Policy', 'Terms & Conditions', '404 Not Found'].map((item) => (
-                   <a key={item} href="#" className="hover:text-white transition-colors w-fit">{item}</a>
-                ))}
-              </nav>
-            </div>
-
-            {/* Column 3: Contact (Full width on mobile if needed, or 3rd col) */}
-            <div className="col-span-2 md:col-span-1 flex flex-col gap-4 lg:gap-6">
-              <h4 className="text-white font-semibold text-sm tracking-wide uppercase opacity-90">Contact</h4>
-              <div className="flex flex-col gap-4 text-sm text-neutral-400">
-                <a href="#" className="flex items-start gap-3 hover:text-white transition-colors group">
-                   <MapPin size={16} className="mt-1 shrink-0 text-neutral-500 group-hover:text-white transition-colors" />
-                   <span>San Francisco, CA <br/> Bay Area</span>
-                </a>
-                <a href="mailto:info@pivotalbuilders.com" className="flex items-center gap-3 hover:text-white transition-colors group">
-                   <Mail size={16} className="shrink-0 text-neutral-500 group-hover:text-white transition-colors" />
-                   <span>info@pivotalbuilders.com</span>
-                </a>
-                <a href="tel:+15551234567" className="flex items-center gap-3 hover:text-white transition-colors group">
-                   <Phone size={16} className="shrink-0 text-neutral-500 group-hover:text-white transition-colors" />
-                   <span>+1 (555) 123-4567</span>
-                </a>
-                
-                <a href="#" className="inline-flex items-center gap-2 text-white mt-4 hover:opacity-70 text-xs font-semibold uppercase tracking-wider border-b border-white/30 pb-1 w-fit">
-                  <span>View on map</span>
-                  <ArrowUpRight size={14} />
-                </a>
-              </div>
-            </div>
-
-          </div>
+        <div>
+           <h2 className="text-5xl md:text-7xl lg:text-[90px] font-bold tracking-tighter leading-[0.9] text-white mb-8">
+             LET’S DISCUSS <br/> <span className="text-neutral-500">YOUR PROJECT</span>
+           </h2>
+           
+           {/* Instagram Button */}
+           <a 
+             href="https://instagram.com/pivotalbuilders" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 hover:bg-white hover:text-black transition-all group"
+           >
+              <Instagram size={18} />
+              <span className="text-sm font-medium">Follow on Instagram</span>
+              <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+           </a>
         </div>
 
-
         {/* =======================
-            BOTTOM BAR: Copyright
+            2. CONTACT DETAILS GRID
         ======================== */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-neutral-500">
-          <p className="text-center md:text-left">
-            Copyright © {currentYear} Pivotal Builders. All rights reserved.
-          </p>
-          
-          <div className="flex items-center gap-6">
-             <a href="#" className="hover:text-white transition-colors">Privacy</a>
-             <a href="#" className="hover:text-white transition-colors">Cookies</a>
-             <div className="flex items-center gap-2 border border-white/10 bg-white/5 px-3 py-1.5 rounded-full">
-               <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-               <span className="font-medium text-white tracking-wide text-[10px] uppercase">System Operational</span>
-             </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/10 pt-12">
+           
+           {/* Column 1: Contact */}
+           <div className="flex flex-col gap-2">
+              <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-2">Contact</span>
+              <a href="tel:4156109225" className="text-lg font-medium hover:text-neutral-300 transition-colors">415-610-9225</a>
+              <a href="mailto:info@pivotalbuildersinc.com" className="text-lg font-medium hover:text-neutral-300 transition-colors">info@pivotalbuildersinc.com</a>
+           </div>
+
+           {/* Column 2: Office */}
+           <div className="flex flex-col gap-2">
+              <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-2">Office</span>
+              <p className="text-lg font-medium text-neutral-300 leading-snug">
+                2560 Geary Blvd Unit 204 <br/>
+                San Francisco, CA
+              </p>
+           </div>
+
+           {/* Column 3: License & Copy */}
+           <div className="flex flex-col gap-4 md:items-end md:text-right">
+              <div className="px-3 py-1 border border-white/20 rounded-md w-fit">
+                 <span className="text-xs font-mono uppercase tracking-widest text-white">
+                   CA LIC 1123494
+                 </span>
+              </div>
+              <p className="text-xs text-neutral-600">
+                 © {currentYear} Pivotal Builders Inc.
+              </p>
+           </div>
+
         </div>
 
       </div>

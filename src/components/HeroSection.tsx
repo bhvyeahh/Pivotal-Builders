@@ -3,7 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, MoveDown } from 'lucide-react';
-
+import Image from 'next/image';
+import Link from 'next/link'; // <--- IMPORT THIS
 
 export default function HeroSection() {
   
@@ -26,9 +27,6 @@ export default function HeroSection() {
   return (
     <section className="relative w-full min-h-screen flex flex-col lg:flex-row bg-[#0A0A0A] overflow-hidden">
       
-      {/* Navbar Overlay */}
-      
-
       {/* =======================
           LEFT PANEL: Dark Content 
           Mobile: 60vh | Desktop: 100vh (50% width)
@@ -50,36 +48,36 @@ export default function HeroSection() {
             <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
               <span>in building what</span>
               <span className="flex items-center gap-3 sm:gap-4">
-                 matters
-                 {/* White Line Graphic */}
-                 <motion.div 
-                   initial={{ width: 0, opacity: 0 }}
-                   animate={{ width: "80px", opacity: 1 }}
-                   transition={{ delay: 1, duration: 1, ease: "easeOut" }}
-                   className="h-[2px] sm:h-[3px] bg-white rounded-full hidden sm:block mt-2"
-                 />
+                  matters
+                  {/* White Line Graphic */}
+                  <motion.div 
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: "80px", opacity: 1 }}
+                    transition={{ delay: 1, duration: 1, ease: "easeOut" }}
+                    className="h-[2px] sm:h-[3px] bg-white rounded-full hidden sm:block mt-2"
+                  />
               </span>
             </div>
           </motion.h1>
 
-          {/* Subtext */}
-
           {/* Buttons */}
           <motion.div variants={reveal} className="flex flex-wrap items-center gap-4">
-            <a 
-              href="#contact" 
+            {/* Contact Button -> /contact */}
+            <Link 
+              href="/contact" 
               className="bg-white text-black h-[48px] sm:h-[54px] px-6 sm:px-8 rounded-full text-sm sm:text-[15px] font-semibold hover:bg-neutral-200 transition-colors flex items-center gap-2 group"
             >
               Contact Us 
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
             
-            <a 
-              href="#about"
+            {/* Learn More Button -> /about */}
+            <Link 
+              href="/about"
               className="h-[48px] sm:h-[54px] px-6 sm:px-8 rounded-full text-sm sm:text-[15px] font-medium text-white border border-neutral-700 hover:border-white transition-colors flex items-center justify-center"
             >
               Learn more
-            </a>
+            </Link>
           </motion.div>
 
         </motion.div>
@@ -92,35 +90,38 @@ export default function HeroSection() {
       ======================== */}
       <div className="w-full lg:w-1/2 h-[40vh] lg:h-screen relative bg-neutral-900">
         
-        {/* Background Image */}
+        {/* Background Image - OPTIMIZED */}
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="absolute inset-0 w-full h-full"
         >
-           <img 
-            src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2600&auto=format&fit=crop" 
-            alt="Pivotal Builders High-End Construction Work" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/10 lg:bg-black/5"></div>
+           <Image 
+             src="/website-photos-1.jpg" // Ensure file is named exactly this in public folder
+             alt="Pivotal Builders High-End Construction Work" 
+             fill
+             className="object-cover"
+             priority={true} // Loads instantly (LCP)
+             sizes="(max-width: 768px) 100vw, 50vw" // Mobile gets small img, Desktop gets half-screen img
+           />
+           <div className="absolute inset-0 bg-black/10 lg:bg-black/5 pointer-events-none"></div>
         </motion.div>
 
-        {/* Scroll Indicator (Hidden on very small screens to save space) */}
+        {/* Scroll Indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 1 }}
           className="hidden sm:block absolute bottom-16 left-1/2 -translate-x-1/2 z-20"
         >
-          <a href="#services" className="w-[60px] h-[60px] lg:w-[70px] lg:h-[70px] rounded-full border border-white/40 flex items-center justify-center text-white backdrop-blur-[2px] hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer">
+          <Link href="/services" className="w-[60px] h-[60px] lg:w-[70px] lg:h-[70px] rounded-full border border-white/40 flex items-center justify-center text-white backdrop-blur-[2px] hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer">
              <MoveDown size={24} strokeWidth={1} className="animate-bounce" />
-          </a>
+          </Link>
         </motion.div>
 
         {/* Location Badge */}
-        <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-md flex items-center gap-2 shadow-xl">
+        <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 bg-white px-3 py-1.5 lg:px-4 lg:py-2 rounded-md flex items-center gap-2 shadow-xl z-20">
            <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-black rounded-full"></div>
            <span className="text-[10px] lg:text-[11px] font-bold uppercase tracking-widest text-black">SF Bay Area</span>
         </div>

@@ -6,6 +6,8 @@ import { CheckCircle2, ClipboardCheck, HardHat, PenTool, Ruler, ArrowRight } fro
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
+import Link from 'next/link';
 
 // Register GSAP ScrollTrigger
 if (typeof window !== "undefined") {
@@ -19,32 +21,32 @@ const servicesData = [
   {
     title: "Full Home Remodel",
     description: "A full home remodel means an expertly curated space with custom details that elevate your daily living. We manage the complexity of whole-house renovations to deliver a cohesive, stunning result.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop" 
+    image: "/website-photos-3.jpg" 
   },
   {
     title: "Kitchen Remodel",
     description: "The kitchen is the heart of the home. We craft spaces that blend form, function, and beauty with upscale materials and custom millwork.",
-    image: "https://images.unsplash.com/photo-1556911220-e8db7e105970?q=80&w=1200&auto=format&fit=crop" 
+    image: "/website-photos-4.jpg" 
   },
   {
     title: "Bathroom Remodel",
     description: "Thoughtfully designed and crafted with comfort and luxury in mind. We transform outdated bathrooms into spa-like retreats.",
-    image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1200&auto=format&fit=crop" 
+    image: "/website-photos-5.jpg" 
   },
   {
     title: "ADU’s (Accessory Dwelling Units)",
     description: "Whether it’s a family retreat or rental unit, we transform underutilized areas into functional extensions of your home.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop" 
+    image: "/website-photos-6.jpg" 
   },
   {
     title: "Additions & Structural Work",
     description: "Expand with intention. We seamlessly integrate new square footage without compromising your home’s character.",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop" 
+    image: "/website-photos-7.jpg" 
   },
   {
     title: "Custom Deck Builds",
     description: "Expertly built to enhance the way you live outdoors. We use durable materials to create the ultimate outdoor entertainment zone.",
-    image: "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=80&w=1200&auto=format&fit=crop" 
+    image: "/website-photos-8.jpg" 
   }
 ];
 
@@ -311,10 +313,12 @@ export default function ServicesPage() {
                 {/* Image */}
                 <div className="w-full lg:w-1/2">
                    <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl group">
-                      <img 
+                      <Image 
                         src={service.image} 
                         alt={service.title} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        unoptimized={true}
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
                    </div>
@@ -344,9 +348,9 @@ export default function ServicesPage() {
                       </li>
                    </ul>
 
-                   <a href="/contact" className="text-sm font-bold uppercase tracking-widest border-b border-black pb-1 hover:opacity-60 transition-opacity flex items-center gap-2">
+                   <Link href="/contact" className="text-sm font-bold uppercase tracking-widest border-b border-black pb-1 hover:opacity-60 transition-opacity flex items-center gap-2">
                      Start Project <ArrowRight size={16} />
-                   </a>
+                   </Link>
                 </div>
               </div>
             ))}
