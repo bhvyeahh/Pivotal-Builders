@@ -1,15 +1,15 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion'; // 1. Imported Variants type
 import { ArrowRight, MoveDown } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link'; // <--- IMPORT THIS
+import Link from 'next/link'; 
 
 export default function HeroSection() {
   
-  // Animation Variants
-  const reveal = {
+  // 2. Applied ': Variants' type to enforce strict typing on the array
+  const reveal: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
@@ -18,7 +18,7 @@ export default function HeroSection() {
     }
   };
 
-  const stagger = {
+  const stagger: Variants = {
     visible: {
       transition: { staggerChildren: 0.1, delayChildren: 0.1 }
     }

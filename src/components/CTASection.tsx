@@ -1,17 +1,18 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, Variants } from "framer-motion"; // 1. Imported Variants
 import {
   ArrowRight,
 } from "lucide-react";
-import Link from "next/link"; // <--- Import Link
+import Link from "next/link";
 
 const CTASection = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
-  const fadeUp = {
+  // 2. Applied ': Variants' type to the animation object
+  const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
@@ -91,7 +92,6 @@ const CTASection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-6 text-sm font-semibold">
-              {/* Email - CORRECTED */}
               <a
                 href="mailto:info@pivotalbuildersinc.com"
                 className="text-white hover:text-neutral-400 transition-colors"

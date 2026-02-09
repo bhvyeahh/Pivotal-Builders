@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, Variants } from 'framer-motion'; // 1. Imported Variants type
 import { 
   ArrowRight, 
   Facebook, 
@@ -16,8 +16,8 @@ const RecentProjects = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
-  // Animation variants
-  const containerVariants = {
+  // 2. Applied ': Variants' type to all animation objects
+  const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
@@ -26,14 +26,22 @@ const RecentProjects = () => {
     }
   };
 
-  const fadeUp = {
+  const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: "easeOut" } 
+    }
   };
 
-  const imageReveal = {
+  const imageReveal: Variants = {
     hidden: { scale: 1.05, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 1, ease: "easeOut" } }
+    visible: { 
+      scale: 1, 
+      opacity: 1, 
+      transition: { duration: 1, ease: "easeOut" } 
+    }
   };
 
   return (
@@ -56,7 +64,7 @@ const RecentProjects = () => {
             variants={imageReveal}
           >
             <Image 
-              src="/website-photos-21.jpg" // Renamed from "Website Photos -21.jpg"
+              src="/website-photos-21.jpg"
               alt="Recent Project 1" 
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
