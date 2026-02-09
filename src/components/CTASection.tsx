@@ -2,16 +2,14 @@
 
 import React, { useRef } from "react";
 import { motion, useInView, Variants } from "framer-motion"; // 1. Imported Variants
-import {
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const CTASection = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
-  // 2. Applied ': Variants' type to the animation object
+  // 2. Added ': Variants' type definition here
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -63,7 +61,7 @@ const CTASection = () => {
         >
           {/* Left: Action Buttons */}
           <div className="flex flex-wrap items-center gap-4">
-            <Link 
+            <Link
               href="/contact"
               className="bg-white text-black px-8 py-4 rounded-full text-sm font-semibold hover:bg-neutral-200 transition-colors flex items-center gap-2 group"
             >
@@ -74,7 +72,7 @@ const CTASection = () => {
               />
             </Link>
 
-            <Link 
+            <Link
               href="/services"
               className="px-8 py-4 rounded-full text-sm font-semibold text-white border border-white/20 hover:bg-white/10 transition-colors"
             >
