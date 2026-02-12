@@ -168,9 +168,9 @@ export default function AboutPage() {
               </div>
 
               {/* Signature */}
-              <div className="pt-8 opacity-80">
+              {/* <div className="pt-8 opacity-80">
                  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Signature_sample.svg" alt="Signature" className="h-12 lg:h-16 w-auto opacity-60 invert-0" />
-              </div>
+              </div> */}
             </div>
           </div>
 

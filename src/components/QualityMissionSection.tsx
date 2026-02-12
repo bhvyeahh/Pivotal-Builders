@@ -4,6 +4,8 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
+import Link from 'next/link';
 
 // Register ScrollTrigger
 if (typeof window !== "undefined") {
@@ -73,21 +75,26 @@ export default function QualityMissionSection() {
             </h2>
             
             <p className="reveal-up text-neutral-500 text-sm md:text-base leading-7 mb-8 max-w-md">
-              Explore homes crafted to perfection with spacious layouts, modern designs, and prime locations. Discover your dream home today.
+              We don't just build structures; we craft legacies. Every detail is meticulously planned and executed to ensure your home stands the test of time, blending durability with timeless elegance.
             </p>
             
-            <button className="reveal-up bg-[#111] text-white px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-black transition-all hover:scale-105 flex items-center gap-2 group">
-              Join us 
+            <Link 
+              href="/contact"
+              className="reveal-up bg-[#111] text-white px-8 py-3.5 rounded-full text-sm font-semibold hover:bg-black transition-all hover:scale-105 flex items-center gap-2 group"
+            >
+              Start your project 
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
           </div>
 
-          {/* IMAGE */}
+          {/* IMAGE - OPTIMIZED */}
           <div className="reveal-img relative h-[400px] lg:h-[500px] w-full rounded-sm overflow-hidden order-2 lg:order-2">
-            <img 
-              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop" 
-              alt="Modern Kitchen Interior" 
-              className="absolute inset-0 w-full h-full object-cover"
+            <Image 
+              src="/website-photos-10.jpg" // Renamed from "Website Photos -10.jpg"
+              alt="Exceptional Quality Detail" 
+              fill
+              className="object-cover"
+              unoptimized={true}
             />
           </div>
         </div>
@@ -100,10 +107,12 @@ export default function QualityMissionSection() {
           
           {/* IMAGE (Left on Desktop, Top on Mobile) */}
           <div className="reveal-img relative h-[400px] lg:h-[500px] w-full rounded-sm overflow-hidden order-2 lg:order-1">
-            <img 
-              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop" 
-              alt="Luxury Living Room" 
-              className="absolute inset-0 w-full h-full object-cover"
+            <Image 
+              src="/website-photos-11.jpg" // Renamed from "Website Photos -11.jpg"
+              alt="Pivotal Builders Mission" 
+              fill
+              className="object-cover"
+              unoptimized={true}
             />
           </div>
 
@@ -114,12 +123,15 @@ export default function QualityMissionSection() {
             </h2>
             
             <p className="reveal-up text-neutral-500 text-sm md:text-base leading-7 mb-8 max-w-md">
-              Our goal is to find properties you love. From luxurious interiors to smart investments, we deliver excellence. Let us guide you home.
+              Our goal is to create spaces you love. From luxurious interiors to smart structural investments, we deliver excellence in every square foot. Let us guide you home.
             </p>
             
-            <button className="reveal-up px-8 py-3.5 rounded-full text-sm font-semibold text-neutral-900 border border-neutral-200 hover:bg-neutral-50 transition-colors">
-              Learn more
-            </button>
+            <Link 
+              href="/services"
+              className="reveal-up px-8 py-3.5 rounded-full text-sm font-semibold text-neutral-900 border border-neutral-200 hover:bg-neutral-50 transition-colors"
+            >
+              Explore Services
+            </Link>
           </div>
 
         </div>
