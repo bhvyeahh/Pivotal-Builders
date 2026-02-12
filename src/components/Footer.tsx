@@ -23,7 +23,7 @@ export default function Footer() {
               {/* Circular Symbol Logo */}
               <div className="relative w-12 h-12 md:w-20 md:h-20 flex-shrink-0 mt-2">
                  <Image 
-                   src="/logo-symbol.png" 
+                   src="/logo-symbol.PNG" 
                    alt="Pivotal Symbol" 
                    fill
                    className="object-contain"
