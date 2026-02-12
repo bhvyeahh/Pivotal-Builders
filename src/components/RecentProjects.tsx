@@ -109,10 +109,9 @@ craftsmanship our clients trust completely.
             <div className="border-t border-neutral-100 pt-8 flex items-center justify-between">
               <span className="text-xs font-semibold text-neutral-900">Follow our work on:</span>
               <div className="flex gap-5 text-neutral-900">
-                <a href="#" className="hover:opacity-60 transition-opacity"><Facebook size={16} /></a>
-                <a href="#" className="hover:opacity-60 transition-opacity"><Twitter size={16} /></a>
-                <a href="#" className="hover:opacity-60 transition-opacity"><Instagram size={16} /></a>
-                <a href="#" className="hover:opacity-60 transition-opacity"><Linkedin size={16} /></a>
+                
+                <a href="https://www.instagram.com/pivotalbuilders/" className="hover:opacity-60 transition-opacity"><Instagram size={16} /></a>
+                
               </div>
             </div>
           </motion.div>

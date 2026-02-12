@@ -1,17 +1,14 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
   ArrowRight, 
-  Facebook, 
-  Instagram, 
-  Linkedin, 
-  Twitter, 
   Menu, 
-  X 
+  X,
+  Instagram 
 } from 'lucide-react';
 
 const navLinks = [
@@ -25,7 +22,18 @@ const navLinks = [
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Explicitly type variants to fix red squiggly lines
+  // Lock Body Scroll when Menu is Open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const menuVariants: Variants = {
     closed: { 
       opacity: 0,
@@ -53,24 +61,24 @@ export default function Navbar() {
         className="absolute top-0 left-0 w-full z-50 px-6 py-6 md:px-12 md:py-8 flex items-center justify-between bg-transparent"
       >
         
-        {/* LEFT: Logo */}
-        <div className="flex items-center gap-16">
-          <Link href="/" className="text-white flex items-center gap-3 group z-50 relative">
-            <div className="relative w-12 h-12 overflow-hidden rounded-lg border border-white/20 group-hover:border-white/50 transition-colors">
-               {/* OPTIMIZED LOGO IMAGE */}
-               <Image 
-                 src="/website-photos-2.jpg" 
-                 alt="Pivotal Builders Logo" 
-                 fill
-                 className="object-cover"
-                 sizes="48px"
-                 priority
-               />
-            </div>
+        {/* ========================
+            LEFT SIDE: LOGO + NAV LINKS
+        ======================== */}
+        <div className="flex items-center gap-26">
+          
+          {/* LOGO CONFIGURATION */}
+          <Link href="/" className="relative z-50 block w-32 h-12 md:w-40 md:h-16">
+             <Image 
+               src="/logo.png" 
+               alt="Pivotal Builders Logo" 
+               fill
+               className="object-contain object-left scale-[2.6] md:scale-[2.8] origin-left"
+               priority
+             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-neutral-400">
+          <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-neutral-400 relative z-50">
             {navLinks.slice(0, 4).map((link) => (
                <Link key={link.name} href={link.href} className="hover:text-white transition-colors">
                  {link.name}
@@ -80,20 +88,30 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* RIGHT: Socials & CTA */}
+        {/* ========================
+            RIGHT SIDE: ACTIONS
+        ======================== */}
         <div className="flex items-center gap-6 z-50 relative">
-          {/* Social Icons (Desktop) */}
-          <div className="hidden xl:flex items-center gap-5 text-white">
-            <a href="#" className="hover:text-neutral-300 hover:-translate-y-0.5 transition-all"><Facebook size={18} strokeWidth={1.5} /></a>
-            <a href="#" className="hover:text-neutral-300 hover:-translate-y-0.5 transition-all"><Twitter size={18} strokeWidth={1.5} /></a>
-            <a href="#" className="hover:text-neutral-300 hover:-translate-y-0.5 transition-all"><Instagram size={18} strokeWidth={1.5} /></a>
-            <a href="#" className="hover:text-neutral-300 hover:-translate-y-0.5 transition-all"><Linkedin size={18} strokeWidth={1.5} /></a>
+          
+          {/* Instagram Link (Desktop) */}
+          <a 
+            href="https://www.instagram.com/pivotalbuilders/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hidden lg:flex text-white/80 hover:text-white transition-colors"
+          >
+             <Instagram size={20} />
+          </a>
+
+          {/* License Number (Desktop) */}
+          <div className="hidden xl:block text-white/90 text-sm font-semibold font-mono tracking-wider drop-shadow-md">
+             LIC. #1110507
           </div>
 
           {/* CTA Button */}
           <Link 
             href="/contact" 
-            className="hidden md:flex bg-white text-black px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group"
+            className="hidden md:flex bg-white text-black px-6 py-3 rounded-full text-sm font-bold hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group shadow-lg"
           >
             Get a quote 
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -101,12 +119,13 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button 
-            className="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors"
+            className="lg:hidden text-white p-2 rounded-full hover:bg-white/10 transition-colors drop-shadow-md"
             onClick={() => setIsMobileMenuOpen(true)}
           >
-            <Menu size={28} strokeWidth={1.5} />
+            <Menu size={32} strokeWidth={1.5} />
           </button>
         </div>
+
       </motion.header>
 
       {/* =======================
@@ -119,26 +138,40 @@ export default function Navbar() {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed inset-0 z-[60] bg-[#050505]/95 backdrop-blur-xl flex flex-col p-8 lg:hidden"
+            className="fixed inset-0 z-[60] bg-[#050505] flex flex-col w-screen h-[100dvh] overflow-y-auto"
           >
             {/* Header */}
-            <div className="flex justify-between items-center mb-16">
-               <span className="text-white font-bold text-xl tracking-tight">Pivotal Builders</span>
+            {/* p-6 ensures exact alignment with nav links below */}
+            <div className="flex justify-between items-center p-6 md:p-8 shrink-0 relative">
+               
+               {/* Mobile Menu Logo */}
+               {/* w-40 keeps it small enough to not overlap the X button, but scale makes it look big */}
+               <div className="relative w-40 h-16">
+                 <Image 
+                   src="/logo.png" 
+                   alt="Pivotal Builders Logo" 
+                   fill
+                   className="object-contain object-left scale-[2.4] origin-left"
+                 />
+               </div>
+
+               {/* CLOSE BUTTON - Added z-50 to ensure it sits ON TOP of the logo's invisible box */}
                <button 
                  onClick={() => setIsMobileMenuOpen(false)} 
-                 className="text-white p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                 className="text-white p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors relative z-50"
                >
-                 <X size={24} />
+                 <X size={32} />
                </button>
             </div>
 
             {/* Navigation Links */}
-            <nav className="flex flex-col gap-8">
+            <nav className="flex flex-col gap-6 md:gap-8 flex-grow justify-center px-6 md:px-8 min-h-[400px]">
               {navLinks.map((link) => (
                 <Link 
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-fit"
                 >
                   <motion.div 
                     variants={linkVariants}
@@ -154,16 +187,33 @@ export default function Navbar() {
             {/* Bottom Footer Area */}
             <motion.div 
                variants={linkVariants}
-               className="mt-auto border-t border-white/10 pt-8"
+               className="mt-auto border-t border-white/10 p-6 md:p-8 shrink-0 pb-12"
             >
-               <div className="flex items-center justify-between">
-                  <span className="text-neutral-500 text-sm">Follow us</span>
-                  <div className="flex gap-6 text-white">
-                     <a href="#"><Facebook size={20} strokeWidth={1.5} /></a>
-                     <a href="#"><Instagram size={20} strokeWidth={1.5} /></a>
-                     <a href="#"><Twitter size={20} strokeWidth={1.5} /></a>
-                     <a href="#"><Linkedin size={20} strokeWidth={1.5} /></a>
+               <div className="flex flex-col gap-8">
+                  
+                  {/* Instagram Link (Mobile Menu) */}
+                  <a 
+                    href="https://www.instagram.com/pivotalbuilders/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-white hover:text-neutral-300 transition-colors w-fit"
+                  >
+                    <div className="bg-white/10 p-3 rounded-full">
+                       <Instagram size={20} />
+                    </div>
+                    <span className="text-lg font-light tracking-wide">Follow on Instagram</span>
+                  </a>
+
+                  {/* License Info */}
+                  <div className="flex flex-col gap-2">
+                    <span className="text-neutral-500 text-xs font-mono tracking-widest uppercase">
+                      Pivotal Builders Inc.
+                    </span>
+                    <span className="text-white text-lg font-bold tracking-wider">
+                      LIC. #1110507
+                    </span>
                   </div>
+                  
                </div>
             </motion.div>
 

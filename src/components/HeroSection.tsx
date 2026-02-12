@@ -115,7 +115,7 @@ export default function HeroSection() {
           transition={{ delay: 1.2, duration: 1 }}
           className="hidden sm:block absolute bottom-16 left-1/2 -translate-x-1/2 z-20"
         >
-          <Link href="/services" className="w-[60px] h-[60px] lg:w-[70px] lg:h-[70px] rounded-full border border-white/40 flex items-center justify-center text-white backdrop-blur-[2px] hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer">
+          <Link href="#services" className="w-[60px] h-[60px] lg:w-[70px] lg:h-[70px] rounded-full border border-white/40 flex items-center justify-center text-white backdrop-blur-[2px] hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer">
              <MoveDown size={24} strokeWidth={1} className="animate-bounce" />
           </Link>
         </motion.div>

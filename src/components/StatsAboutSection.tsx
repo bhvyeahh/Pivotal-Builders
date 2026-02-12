@@ -146,7 +146,7 @@ in all types of residential and commercial projects.
             
             {/* OPTIMIZED IMAGE: "unoptimized" prop forces 100% original quality */}
             <Image 
-              src="/website-photos-35.jpg" 
+              src="/website-photos-34-copy.jpg" 
               alt="Award Winning Interior" 
               fill
               className="parallax-image object-cover object-center scale-[1.2]" 
