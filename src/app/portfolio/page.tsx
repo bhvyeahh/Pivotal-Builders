@@ -20,7 +20,7 @@ const projects = [
   {
     id: "01",
     location: "Menlo Park",
-    category: "Full Home Remodel",
+    category: "Bathroom Remodel",
     year: "2023",
     description: "A complete transformation blending modern luxury with timeless details, featuring a spa-inspired bathroom and custom vanity spaces.",
     theme: "light",
