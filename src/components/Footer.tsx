@@ -98,6 +98,15 @@ export default function Footer() {
                 <p className="text-xs text-neutral-600">
                   © {currentYear} Pivotal Builders Inc.
                 </p>
+
+                <a 
+                  href="https://www.layoutory.in" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[10px] text-neutral-700 hover:text-neutral-500 transition-colors uppercase tracking-wider"
+                >
+                  Website by Layoutory
+                </a>
               </div>
            </div>
 

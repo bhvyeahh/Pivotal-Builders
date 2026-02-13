@@ -4,6 +4,7 @@ import React, { useRef, useState, useLayoutEffect } from 'react';
 import { ArrowRight, ArrowLeft, Quote } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 // Register ScrollTrigger
 if (typeof window !== "undefined") {
@@ -142,11 +143,11 @@ export default function TestimonialsSection() {
             <p className="text-neutral-500 text-lg leading-relaxed mb-10 max-w-md">
               Hear from those who have trusted us to build their dreams. Our reputation is built on their satisfaction.
             </p>
-
-            <button className="bg-black text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-neutral-800 transition-all hover:scale-105 flex items-center gap-2 group shadow-xl">
+            <Link href="/contact"><button className="bg-black text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-neutral-800 transition-all hover:scale-105 flex items-center gap-2 group shadow-xl">
               Get a quote 
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </button></Link>
+            
           </div>
 
 

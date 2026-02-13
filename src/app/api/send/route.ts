@@ -13,8 +13,8 @@ export async function POST(request: Request) {
     const { name, email, phone, service, message } = body;
 
     const data = await resend.emails.send({
-      from: 'Queries <hello@layoutory.in>', 
-      to: ['bhavyarathore575@gmail.com'], 
+      from: 'Queries <pivotal@layoutory.in>', 
+      to: ['ullutechp@gmail.com'], 
       
       // ADD THIS LINE: This ensures "Reply" goes to the lead
       replyTo: email, 

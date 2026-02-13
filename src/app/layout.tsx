@@ -1,21 +1,27 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google"; // 1. Change Import
+import { Space_Grotesk } from "next/font/google"; 
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/components/SmoothScroll";
 import NextTopLoader from "nextjs-toploader";
 import ScrollToTop from "@/components/ScrollToTop";
 
-// 2. Configure Font
+// Configure Font
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-space" // Optional variable for Tailwind
+  variable: "--font-space" 
 });
 
 export const metadata: Metadata = {
   title: "Pivotal Builders",
   description: "Your pivotal partner in building what matters.",
+  // ADDED: Explicit Icon Configuration
+  icons: {
+    icon: '/logo-symbol.png', // Main favicon
+    shortcut: '/logo-symbol.png',
+    apple: '/logo-symbol.png', // iOS home screen icon
+  },
 };
 
 export default function RootLayout({
@@ -25,16 +31,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* 3. Apply Font Class */}
       <body className={spaceGrotesk.className}>
         <SmoothScroll>
         <NextTopLoader
-          color="#000000"     // Color of the bar (Black fits your construction theme)
+          color="#000000"     // Color of the bar
           initialPosition={0.08}
           crawlSpeed={200}
-          height={3}          // Height of the bar in px
+          height={3}          // Height of the bar
           crawl={true}
-          showSpinner={false} // Keep this FALSE for a cleaner, high-end look
+          showSpinner={false} // Cleaner look
           easing="ease"
           speed={200}
           shadow="0 0 10px #2299DD,0 0 5px #2299DD"

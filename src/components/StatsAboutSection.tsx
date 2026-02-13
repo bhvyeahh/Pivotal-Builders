@@ -13,6 +13,7 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Register ScrollTrigger
 if (typeof window !== "undefined") {
@@ -129,9 +130,9 @@ export default function StatsAboutSection() {
              Pivotal Builders is a full-service construction company serving the San Francisco Bay Area specializing
 in all types of residential and commercial projects.
            </p>
-           <button className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-neutral-900 border-b border-neutral-900 pb-1 hover:opacity-60 transition-opacity">
+           <Link href = "/services"><button className="group flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-neutral-900 border-b border-neutral-900 pb-1 hover:opacity-60 transition-opacity">
              Explore Our Approach <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform"/>
-           </button>
+           </button></Link>
         </div>
       </div>
 
