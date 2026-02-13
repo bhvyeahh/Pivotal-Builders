@@ -18,9 +18,10 @@ export const metadata: Metadata = {
   description: "Your pivotal partner in building what matters.",
   // ADDED: Explicit Icon Configuration
   icons: {
-    icon: '/logo-symbol.png', // Main favicon
-    shortcut: '/logo-symbol.png',
-    apple: '/logo-symbol.png', // iOS home screen icon
+    // Adding the leading slash ensures Vercel finds it in the public folder
+    icon: "/logo.png", 
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
 };
 
