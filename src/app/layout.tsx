@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   // ADDED: Explicit Icon Configuration
   icons: {
     // Adding the leading slash ensures Vercel finds it in the public folder
-    icon: "/logo.png", 
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/icon.png", 
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
 };
 
