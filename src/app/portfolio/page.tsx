@@ -65,20 +65,12 @@ const generateGallery = () => {
   for (let i = 1; i <= 41; i++) {
     if (skip.includes(i)) continue; 
     
-    // LOGIC: "2 Small, 1 Big" on Mobile
-    // 1. Default: Small square (col-span-1)
-    // 2. Every 3rd item: Full width (col-span-2)
-    // 3. Desktop Overrides (md:): Masonry variety
-    
     let spanClass = "col-span-1 md:col-span-1 md:row-span-1"; // Mobile Small / Desktop Small
 
     if (items.length % 3 === 2) { 
-        // This is the 3rd item in the sequence (Index 2, 5, 8...)
-        // Make it FULL WIDTH on mobile
         spanClass = "col-span-2 md:col-span-1 md:row-span-2"; 
     }
     
-    // Add some larger items on Desktop ONLY (doesn't affect mobile flow)
     if (i % 7 === 0) {
         spanClass = "col-span-1 md:col-span-2 md:row-span-2"; 
     }
@@ -151,9 +143,7 @@ export default function PortfolioPage() {
     <main ref={mainRef} className="w-full relative selection:bg-neutral-500 selection:text-white">
       
       {/* =======================
-          1. HERO SECTION (TIGHTER PADDING)
-          - Reduced pt-32 to pt-24 (96px) to remove "Blank Area"
-          - Content starts higher up now
+          1. HERO SECTION
       ======================== */}
       <section className="relative pt-32 pb-12 px-6 md:px-12 bg-[#050505] text-white">
         <div className="max-w-[1400px] mx-auto w-full">
@@ -226,7 +216,14 @@ export default function PortfolioPage() {
                         <div className="grid grid-cols-2 gap-4 h-[40vh] lg:h-[50vh]">
                           {project.images.map((src, i) => (
                              <div key={i} className="reveal-img relative w-full h-full overflow-hidden rounded-sm group">
-                               <Image src={src} alt={project.location} fill className="object-cover hover:scale-105 transition-transform duration-1000" unoptimized={true} />
+                               <Image 
+                                 src={src} 
+                                 alt={project.location} 
+                                 fill 
+                                 className="object-cover hover:scale-105 transition-transform duration-1000" 
+                                 sizes="(max-width: 768px) 100vw, 50vw" // <--- ADDED SIZES
+                                 priority={index === 0} // <--- PRIORITY FOR FIRST PROJECT
+                               />
                              </div>
                           ))}
                         </div>
@@ -237,7 +234,14 @@ export default function PortfolioPage() {
                              const spanClasses = (imageCount === 3 && i === 0) ? 'row-span-2' : '';
                              return (
                               <div key={i} className={`reveal-img relative w-full h-full overflow-hidden rounded-sm group ${spanClasses}`}>
-                                <Image src={src} alt={project.location} fill className="object-cover hover:scale-105 transition-transform duration-1000" unoptimized={true} />
+                                <Image 
+                                  src={src} 
+                                  alt={project.location} 
+                                  fill 
+                                  className="object-cover hover:scale-105 transition-transform duration-1000" 
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // <--- ADDED SIZES
+                                  priority={index === 0} // <--- PRIORITY FOR FIRST PROJECT
+                                />
                               </div>
                              )
                            })}
@@ -263,7 +267,6 @@ export default function PortfolioPage() {
             <span className="text-neutral-500 font-mono text-xs tracking-widest hidden md:block">ALL DETAILS</span>
           </div>
 
-          {/* GRID: Added 'grid-flow-dense' to fix gaps */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[300px] grid-flow-dense">
             {galleryItems.map((item, i) => (
               <div 
@@ -275,7 +278,7 @@ export default function PortfolioPage() {
                   alt={`Archive ${item.id}`} 
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  unoptimized={true}
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw" // <--- ADDED SIZES
                 />
                 <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/50 text-white px-2 py-1 rounded backdrop-blur-sm z-10 pointer-events-none">
                    IMG_{item.id}
