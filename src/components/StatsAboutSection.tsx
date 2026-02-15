@@ -22,8 +22,7 @@ if (typeof window !== "undefined") {
 
 const stats = [
   { value: 40, suffix: '+', label: 'Successful projects' },
-  { value: 35, suffix: '+', label: 'Team members' },
-  { value: 50, suffix: '+', label: 'Happy clients' },
+  { value: 50, suffix: '+', label: 'Happy clients' }
 ];
 
 export default function StatsAboutSection() {

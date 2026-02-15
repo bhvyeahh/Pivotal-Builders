@@ -86,7 +86,7 @@ export default function AboutPage() {
            
            <h1 className="reveal-text text-5xl md:text-7xl lg:text-[6vw] font-bold tracking-tighter leading-[0.95] mb-8">
              BUILT ON TRUST & <br/>
-             <span className="text-neutral-500 italic font-serif">CRAFTSMANSHIP.</span>
+             <span className="text-neutral-500 italic font-serif">Integrity.</span>
            </h1>
            
            <p className="reveal-text text-lg md:text-xl text-neutral-400 font-light max-w-2xl leading-relaxed">
